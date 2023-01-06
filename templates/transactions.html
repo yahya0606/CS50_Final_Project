@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transactions
+{% endblock %}
+
+{% block main %}
+    <table class="table table-triped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Sender</th>
+                <th>Receiver</th>
+                <th>Amount</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in transactions %}
+                <tr>
+                    <td>{{ t.id }}</td>
+                    <td>{{ t.sender }}</td>
+                    <td>{{ t.receiver }}</td>
+                    <td {% if t.receiver == user %}
+                    style="background-color:#b6da00;font-size:18px;color:#000000;"
+                    {% else %}
+                    style="background-color:#da2400;font-size:18px;color:#000000;"
+                    {% endif %} >{{ t.amount | usd }}</td>
+                    <td>{{ t.timestamp }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
