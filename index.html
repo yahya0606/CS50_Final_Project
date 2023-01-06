@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr class="bgcolor">
+                <th colspan="1"></th>
+                <th>Transaction_ID</th>
+                <th>Sender</th>
+                <th>Receiver</th>
+                <th>Amount</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+                <td>{{ sum_totals | usd }}</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for summary in summaries %}
+                <tr>
+                    <td colspan="1"></td>
+                    <td>{{ summary.id }}</td>
+                    <td>{{ summary.sender }}</td>
+                    <td>{{ summary.receiver }}</td>
+                    <td <td {% if summary.receiver == user %}
+                    style="background-color:#b6da00;font-size:18px;color:#000000;"
+                    {% else %}
+                    style="background-color:#da2400;font-size:18px;color:#000000;"
+                    {% endif %}>{{ summary.amount | usd }}</td>
+                    <td>{{ summary.timestamp}}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="4">CASH</td>
+                <td>{{ owned_cash | usd }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

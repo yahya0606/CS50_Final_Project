@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quete
+{% endblock %}
+
+{% block main %}
+    {% if query %}
+        <p>
+            A share of {{ query.name}} ({{ query.symbol }}) costs {{ query.price | usd }}
+        </p>
+    {% else %}
+        <form action="/search", method="post">
+            <div class="form-group">
+                <input autocomplete="off" autofocus required class="form-control" name="username" placeholder="Username" type="text">
+            </div>
+            <button class="btn btn-primary" type="submit">Search User</button>
+        </form>
+
+        <table class="table table-triped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in users %}
+                    <tr>
+                        <td>{{ t.id }}</td>
+                        <td>{{ t.username }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
