@@ -5,13 +5,13 @@ TODO
 
 # C$50 Finance
 
-Implement a website via which users can send money, a la the below.
+Implement a website via which users can send money, as shown the below.
 
 ![C$50 Banking](finance.png)
 
 ## Background
 
-You're about to implement C$50 Banking, a web app via which you can manage portfolios of yout bank account. Not only will this tool allow you to check your account and send money to friends.
+You're about to implement C$50 Banking, a web app via which you can manage portfolios of your bank account. Not only will this tool allow you to check your account and send money to friends.
 
 ### Running
 
